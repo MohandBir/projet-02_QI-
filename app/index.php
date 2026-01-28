@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>TestQI</title>
-</head>
-<body>
-    <?php require('shared/header.php'); ?>
+
+    <?php require('shared/openHtml.php'); ?>
 
     <main>
         <div class="container">
@@ -16,12 +8,10 @@
         
         </p>
 
-            <p class="start"><a href="">Commencer le test</a></p> 
+            <p class="start"><a href="questions/question1.php">Commencer le test</a></p> 
         </div>
         
     </main>
 
-    <?php require('shared/footer.php') ?>
+    <?php require('shared/closeHtml.php') ?>
     
-</body>
-</html>
