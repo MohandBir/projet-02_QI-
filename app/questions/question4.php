@@ -41,6 +41,4 @@ require('../shared/openHtml.php');
 </div>
 
 </main>
-<?php require('../shared/closeHtml.php'); 
-
-?>
+<?php require('../shared/closeHtml.php'); ?>
