@@ -2,13 +2,13 @@ services:
   
   php:
     build: ./docker/php
-    container_name: app_php
+    container_name: testQI_php
     volumes:
       - ./app:/var/www/html
  
   nginx:
     image: nginx:alpine
-    container_name: app_nginx
+    container_name: testQI_nginx
     ports:
       - "8080:80"
     volumes:
