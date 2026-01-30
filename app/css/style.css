@@ -29,13 +29,33 @@ h1 {
 }
 
 .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 0 130px;
+
 }
+
+.container-age{
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap : 20px;
+    background-color: rgb(160, 182, 175);
+    border : solid  rgb(160, 182, 175) 1.5px;
+    border-radius: 7px;
+    margin: 0 15px;
+    padding: 8px 0 30px 0;
+    max-height: 400px;
+}
+
 .container3 {
     padding: 0 50px;
 }
 .container-result {
     text-align: center;
+
     margin: 0 15px;
     border-radius: 10px
 }
@@ -66,11 +86,30 @@ h1 {
 .container>.paragraphe {
     font-size: 11px;   
     line-height: 1.6;
+    max-width: 842px;
+    min-width: 500px;
 }
 
-
+.verif-age {
+    text-align: center;
+    margin-top: 25px;
+    min-width: 408px;
+}
+.verif-age>form>p { 
+    margin-top: 15px;
+}
+.error-age {
+    color: red;
+    margin-top: 10px;
+    font-size: 18px;
+}
 .start {
+    display: block;
     padding-top: 20px;
+}
+
+.start-hide {
+    display: none;
 }
 
 .start>a {
@@ -115,10 +154,7 @@ h1 {
     padding: 4px 2px;
 }
 footer { 
-    position: fixed;
-    bottom: 20px;
-    left: 0;
-    width: 100%;
+    margin: 20px 0;
     text-align: center;
 }
 

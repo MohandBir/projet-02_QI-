@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+if (empty($_SESSION['ageVerified'])) {
+    header('location: http://localhost:8080');
+    exit();
+}
+
 if(!empty($_POST)){
     $answer = ($_POST['reponse3']);
     if ($answer === 'c') {

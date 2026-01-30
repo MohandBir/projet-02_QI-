@@ -1,5 +1,10 @@
 <?php
+session_start();
 
+if (empty($_SESSION['ageVerified'])) {
+    header('location: http://localhost:8080');
+    exit();
+}
 // import de header...
 
 $title = 'Question 1';
