@@ -9,7 +9,7 @@ session_start();
 
 $hide = 'start-hide';
 
-if (!empty($_POST) &&  isset($_POST['age']) ) {
+if ( !empty($_POST) ) {
     $age = (int) $_POST['age'];
     if ($age >= 18){
         $_SESSION['ageVerified'] = true;
@@ -21,7 +21,7 @@ if (!empty($_POST) &&  isset($_POST['age']) ) {
 } else {
     session_destroy();
 }
-
+var_dump($_SESSION);
 
 
 

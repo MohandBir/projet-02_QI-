@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-if (empty($_SESSION['ageVerified'])) {
+if (empty($_SESSION['ageVerified'])) {   // redirection tâche 1
+    session_destroy();
     header('location: http://localhost:8080');
     exit();
 }
@@ -9,11 +10,21 @@ if (empty($_SESSION['ageVerified'])) {
 if(!empty($_POST)){
     $answer = ($_POST['reponse3']);
     if ($answer === 'c') {
-        $_SESSION['score'] += 20 ; 
-    } 
+        $_SESSION['score'] += 20 ;
+        $_SESSION['question3'] = true; // Veresion 2 
+    } else {
+        $_SESSION['question3'] = true; // Veresion 2
+    }
 }
 
+// redirection auto tâche 2
+if (array_keys($_SESSION) !== ['ageVerified', 'score', 'question1', 'question2', 'question3'] ){  // redirection auto tâche 2
+    session_destroy();
+    header('location: http://localhost:8080');
+    exit();
+}
 
+var_dump($_SESSION);
 
 $title = 'Question 4 ';
 require('../shared/openHtml.php'); 

@@ -1,7 +1,10 @@
 <?php
 session_start();
 
-if (empty($_SESSION['ageVerified'])) {
+
+
+if (empty($_SESSION['ageVerified'])) {   // redirection tâche 1
+    session_destroy();
     header('location: http://localhost:8080');
     exit();
 }
@@ -9,11 +12,23 @@ if (empty($_SESSION['ageVerified'])) {
 if(!empty($_POST) && count($_POST) === 3){
     if (in_array('3', $_POST, true) && in_array('5', $_POST, true) && in_array('6', $_POST, true)) {
         $_SESSION['score'] += 20;
+        $_SESSION['question5'] = true; // Veresion 2
     }
+} else {
+    $_SESSION['question5'] = true; // Veresion 2
+}
+
+// redirection auto tâche 2
+if (array_keys($_SESSION) !== ['ageVerified', 'score', 'question1', 'question2', 'question3', 'question4', 'question5'] ){  
+    session_destroy();
+    header('location: http://localhost:8080');
+    exit();
 }
 
 $QI = $_SESSION['score'] + 60;
 
+
+ 
 $title = 'Résultat ';
 require('../shared/openHtml.php'); 
 ?>
@@ -66,4 +81,7 @@ require('../shared/openHtml.php');
 </div>
 
 </main>
-<?php require('../shared/closeHtml.php'); ?>
+<?php 
+    require('../shared/closeHtml.php'); 
+    
+?>
