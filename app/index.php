@@ -20,6 +20,7 @@ if ( !empty($_POST) ) {
     }   
 } else {
     session_destroy();
+    $_SESSION = [];
 }
 var_dump($_SESSION);
 

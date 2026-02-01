@@ -2,33 +2,43 @@
 session_start();
 
 
-
-if (empty($_SESSION['ageVerified'])) {   // redirection tâche 1
+ // redirection tâche 1
+if (empty($_SESSION['ageVerified'])) {  
     session_destroy();
     header('location: http://localhost:8080');
     exit();
 }
 
-if(!empty($_POST) && count($_POST) === 3){
-    if (in_array('3', $_POST, true) && in_array('5', $_POST, true) && in_array('6', $_POST, true)) {
-        $_SESSION['score'] += 20;
-        $_SESSION['question5'] = true; // Veresion 2
-    }
-} else {
-    $_SESSION['question5'] = true; // Veresion 2
-}
+$_SESSION['userChecked'] = true;
 
 // redirection auto tâche 2
-if (array_keys($_SESSION) !== ['ageVerified', 'score', 'question1', 'question2', 'question3', 'question4', 'question5'] ){  
+if (array_keys($_SESSION) !== ['ageVerified', 'score', 'question1', 'question2', 'question3', 'question4', 'question5', 'userChecked'] ){  
     session_destroy();
     header('location: http://localhost:8080');
     exit();
 }
+
+// stockage information d'utilisateurs
+if (!empty($_POST)) {
+    $nom = $_POST['nom'];
+    $email = $_POST['email'];
+    $cleanedEmail = str_replace(['@', '.'], '',$email);
+    $birthDate = $_POST['birthDate'];
+    $filePath = "../data/$cleanedEmail.txt";
+    $score = $_SESSION['score'];
+
+    $data ='Nom : '.$nom ."\n".'email : '.$email ."\n". 'date de naissance : '.$birthDate ."\n".'Score : '.$score ."\n" ;
+    
+    file_put_contents($filePath, $data, FILE_APPEND);
+
+}
+
+
+
+
 
 $QI = $_SESSION['score'] + 60;
 
-
- 
 $title = 'Résultat ';
 require('../shared/openHtml.php'); 
 ?>

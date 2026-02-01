@@ -1,12 +1,13 @@
 <?php
 session_start();
-
-if (empty($_SESSION['ageVerified'])) {   // redirection tâche 1
+// redirection tâche 1
+if (empty($_SESSION['ageVerified'])) {   
     session_destroy();
     header('location: http://localhost:8080');
     exit();
 }
 
+// Traitement question 4
 if(!empty($_POST)){
     $answer = ($_POST['reponse4']);
     if ($answer === '2') {
@@ -37,7 +38,7 @@ require('../shared/openHtml.php');
     <div class="question1">
         <p>Quel sont les nombres qui n'ont pas de racine carré entière ?</p>
         
-        <form action="../result/result.php" method="Post" class="form5">
+        <form action="../result/formUser.php" method="Post" class="form5">
         
             <p>
                 <input type="checkbox" name="reponse5-1" value="1">
